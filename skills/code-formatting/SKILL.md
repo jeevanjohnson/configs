@@ -155,6 +155,41 @@ This skill ensures code follows current best practices by systematically:
 - C++: Add std types where helpful
 - C#: Already statically typed
 
+### Step 4.5: Handle `# type: ignore` Comments
+
+**Important**: `# type: ignore` comments are intentional workarounds and should **NEVER be removed** during formatting.
+
+#### Preservation Policy
+- **Do NOT** remove or modify `# type: ignore` comments
+- **Do NOT** assume they're unnecessary
+- **Assume** they exist for valid reasons (e.g., third-party library type stubs, legitimate type system workarounds)
+
+#### Flagging for Review
+When formatting code that contains `# type: ignore` comments:
+1. **Identify** all lines with `# type: ignore`
+2. **Document** them in a separate list for manual review
+3. **Flag** them with context:
+   - Line number
+   - The line of code
+   - Reason if commented
+
+**Example**:
+```python
+# Line 42: x = library.function()  # type: ignore
+# ^ Third-party library has incomplete type stubs
+
+# Line 87: result = cast(MyType, data)  # type: ignore
+# ^ Intentional workaround for mypy limitation with generics
+```
+
+#### When to Question `# type: ignore`
+Only suggest revisiting a `# type: ignore` if:
+- The code has been significantly refactored since it was added
+- A dependency update includes better type stubs
+- The code can now be properly typed without the ignore
+
+Otherwise: **preserve it as-is**.
+
 ### Step 5: Verify and Validate
 
 **Quality Checks**:
@@ -166,6 +201,8 @@ This skill ensures code follows current best practices by systematically:
 - ✅ Type annotations present where applicable
 - ✅ Line length within limits
 - ✅ No trailing whitespace
+- 🚩 **Flag and document** all `# type: ignore` comments found (do not remove)
+- 🚩 **List** locations of `# type: ignore` for manual review
 
 **Validation**:
 - Run linter (eslint, pylint, clippy, etc.)
