@@ -29,6 +29,39 @@ This skill ensures the pytest suite stays in sync with the code by:
 - Keep tests independent, readable, and specific.
 - Do not consider the work complete until `pytest` has been run successfully.
 
+## 🚨 CRITICAL: Handling Test Failures
+
+**When a test fails, ALWAYS determine the root cause:**
+
+1. **If the test has a logical flaw** (wrong assertion, incorrect expectation):
+   - ✅ Fix the test
+
+2. **If the test is catching real code behavior** (code doesn't match test expectations):
+   - ❌ **DO NOT automatically modify the test to make it pass**
+   - ✅ **NOTIFY the user and ASK for permission to fix**
+   - Explain what the code does vs what the test expects
+   - Let the user decide if this is a bug to fix or intended behavior
+
+3. **Never silently replace/remove a failing test**:
+   - Always investigate why it failed
+   - Always report findings to the user
+   - Always ask before making changes to production code
+
+**Example**:
+```
+Test failure detected in test_empty_string_key
+- Test expects: File created as ".json" when key is empty string
+- Actual behavior: File not created with empty string key
+- This appears to be catching real code behavior, not a test flaw
+
+Options:
+1. Fix the code to handle empty string keys properly
+2. Update the test to reflect intended behavior
+3. Remove the test if empty strings are intentionally unsupported
+
+Which would you prefer?
+```
+
 ---
 
 ## Workflow
