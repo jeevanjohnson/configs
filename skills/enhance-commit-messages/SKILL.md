@@ -82,15 +82,13 @@ BREAKING CHANGE: description of what broke and migration path
 
 ## Output Format
 
-Present the final commit message as:
+Provide a single, complete commit message as the output:
+
 ```
 <final commit message>
 ```
 
-Optionally explain:
-- Why you chose this type and scope
-- Any assumptions made from the diff
-- Suggestions for the body if it's complex
+The message should be comprehensive and self-contained, even if it results in a longer body. If the changes involve multiple concerns, incorporate them into one message with a detailed body explaining all aspects.
 
 ## Example Workflow
 
@@ -98,23 +96,25 @@ Optionally explain:
 
 **Your analysis:**
 - Diff shows: Bug fix in auth module + dependency updates
-- Types detected: `fix` (auth bug) + `chore` (dependencies)
-- Best match: Two separate commits recommended, or choose the primary one
+- Types detected: `fix` (primary change) with related dependency updates
+- Approach: Combine into one comprehensive commit since updates support the main fix
 
 **Output:**
 ```
-fix(auth): resolve token expiration on page refresh
+fix(auth): resolve token expiration and update dependencies
 
 Prevent JWT token from expiring unexpectedly during active sessions
 by adjusting token refresh interval from 1 hour to 30 minutes.
-```
 
-Then suggest: "Note: Also update dependencies (chore). Consider a separate commit: `chore(deps): bump lodash from 4.17.20 to 4.17.21`"
+Also updates lodash from 4.17.20 to 4.17.21 to include security fixes
+required for this auth flow refactor.
+```
 
 ## Tips for Better Results
 
 1. **Analyze the diff thoroughly** — don't guess the scope; verify from file paths
 2. **Prioritize clarity** — the commit message should be understandable to someone unfamiliar with the code
-3. **Be honest about scope** — if multiple types apply, suggest separate commits
-4. **Ask for clarification** — if the diff is ambiguous or contradicts the user's message
-5. **Consider context** — check for related issues or PRs if mentioned
+3. **Be comprehensive** — when changes are related, combine them into one commit with a detailed body explaining all aspects
+4. **Use the body effectively** — separate logical concerns with paragraphs in the body rather than splitting into multiple commits
+5. **Ask for clarification** — if the diff is ambiguous or contradicts the user's message
+6. **Consider context** — check for related issues or PRs if mentioned
