@@ -1,0 +1,57 @@
+{
+    "terminal.integrated.fontFamily": "monospace",
+    "editor.fontFamily": "",
+    "workbench.settings.applyToAllProfiles": [
+        "editor.fontFamily"
+    ],
+    "github.copilot.nextEditSuggestions.enabled": true,
+    "python.analysis.typeCheckingMode": "basic",
+    "git.autofetch": true,
+    "git.enableSmartCommit": true,
+    "editor.fontSize": 17,
+    "github.copilot.enable": {
+        "*": true,
+        "plaintext": true,
+        "markdown": true,
+        "scminput": false
+    },
+    "window.menuBarVisibility": "compact",
+    "workbench.activityBar.location": "top",
+    "claudeCode.preferredLocation": "panel",
+    "workbench.editor.empty.hint": "hidden",
+    "chat.viewSessions.orientation": "stacked",
+    "workbench.colorTheme": "Dark Modern",
+    
+    // Inspired by https://www.youtube.com/watch?v=4opxM6g77UA
+    // https://www.youtube.com/watch?v=fmzVJ0Wt29I
+    // Search/Path Indexing optimizations
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/.DS_Store": true,
+        "**/Thumbs.db": true,
+        "**/node_modules": true,
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/.ruff_cache": true,
+        "**/.venv": true,
+        "**/venv": true
+    },
+    "search.exclude": {
+        "**/__pycache__": true,
+        "**/.pytest_cache": true,
+        "**/.ruff_cache": true,
+        "**/.venv": true,
+        "**/venv": true
+    },
+    "python.analysis.exclude": ["**/.venv", "**/venv"],
+
+    // VSC Performance specific
+    "breadcrumbs.enabled": false, // path under the file name in the editor
+    "editor.minimap.enabled": false, // mini map on the left, maybe enable in the future
+    "search.searchOnType": false, // now press enter to search
+    "terminal.integrated.gpuAcceleration": "on", // GPU acceleration for terminal optimization
+    "editor.codeLens": false, // allows you to see who changed what in the code, don't have a usecase for it yet
+    "workbench.editor.enablePreview": false // when you open a file, w/e the old file you were viewing will be replaced (i turned this off)
+}

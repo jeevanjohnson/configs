@@ -1,33 +1,33 @@
-# AI Workflow
+# Personal Development Setup
 
-## Overview
+Configuration files, instructions, and skills for my development workflow. Use this as a reference when setting up a new machine or transferring my setup. I'll keep this updated as my workflow evolves.
 
-This repository documents how I configure GitHub Copilot to support my AI-assisted development workflow. The setup prioritizes three core goals: rapid development, long-term maintainability, and continuous learning through code.
-
-**Configuration location:** `C:\Users\jeeva\.copilot`
-
-## Core Concepts
+## Contents
 
 ### Instructions
-
-Always-on rules that govern how the model responds across all tasks.
-
-- Applied automatically to your entire workflow
-- Define coding standards and preferences
-- Examples: "Always use Python," "Never use library X," "Prefer readable solutions over clever ones"
+Core principles and guidelines for working with AI assistance across multiple programming languages. Covers code quality, architecture thinking, and clean separation of concerns.
 
 ### Skills
+Reusable workflows and best practices for specialized tasks:
+- **code-formatting** — Standardize code style, imports, and type annotations
+- **enhance-commit-messages** — Write professional Conventional Commits
+- **enhance-documentation** — Improve markdown documentation clarity and structure
+- **learn-first** — Plan what to learn before starting a project
+- **pytest-autogeneration** — Generate and maintain meaningful test coverage
 
-Specialized workflows that load on-demand when a specific task requires them.
+### VS Code Configuration
+User settings for terminal, editor, performance optimization (search/indexing exclusions), and tool preferences.
 
-- Triggered by the model when relevant to the current task
-- Think of them as callable functions the model can use
-- Examples: "enhance commit messages," "improve documentation quality"
+## Quick Reference
 
-### Agents
+When transitioning to a new machine:
+1. Copy the `copilot/` folder to `~/.copilot/`
+2. Import settings from `vsc/user.json` into VS Code
+3. Review `instructions/` for active guidelines
+4. Enable relevant skills as needed
 
-AI entities configured with specific instructions and skills to perform tasks.
+## Notes
 
-- Represents the AI model with a customized rule set (instructions) and capabilities (skills)
-- Instructions define what the agent can do; the agent is the executor
-- Enable multi-stage workflows with tailored constraints and behavior
+- Instructions are language-agnostic; skills are specialized for specific workflows
+- All configurations are personal preferences—adapt to your needs
+- Keep this README updated when adding new instructions or skills
