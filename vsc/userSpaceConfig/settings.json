@@ -1,6 +1,6 @@
 {
     "terminal.integrated.fontFamily": "monospace",
-    "editor.fontFamily": "",
+    "editor.fontFamily": "JetBrainsMono NFP",
     "workbench.settings.applyToAllProfiles": [
         "editor.fontFamily"
     ],
@@ -20,10 +20,9 @@
     "claudeCode.preferredLocation": "panel",
     "workbench.editor.empty.hint": "hidden",
     "chat.viewSessions.orientation": "stacked",
-    "workbench.colorTheme": "Dark Modern",
+    "workbench.colorTheme": "One Dark Pro Night Flat",
     
     // Inspired by https://www.youtube.com/watch?v=4opxM6g77UA
-    // https://www.youtube.com/watch?v=fmzVJ0Wt29I
     // Search/Path Indexing optimizations
     "files.exclude": {
         "**/.git": true,
@@ -52,6 +51,25 @@
     "editor.minimap.enabled": false, // mini map on the left, maybe enable in the future
     "search.searchOnType": false, // now press enter to search
     "terminal.integrated.gpuAcceleration": "on", // GPU acceleration for terminal optimization
-    "editor.codeLens": false, // allows you to see who changed what in the code, don't have a usecase for it yet
-    "workbench.editor.enablePreview": false // when you open a file, w/e the old file you were viewing will be replaced (i turned this off)
+    "editor.codeLens": true, // allows you to see who changed what in the code, don't have a usecase for it yet
+    "workbench.editor.enablePreview": false,
+    "workbench.iconTheme": "vira-icons-palenight",
+    "terminal.integrated.profiles.windows": {
+        "PowerShell": {
+            "path": "C:\\Users\\jeeva\\AppData\\Local\\Microsoft\\WindowsApps\\Microsoft.PowerShell_8wekyb3d8bbwe\\pwsh.exe"
+        },
+        "Command Prompt": {
+            "path": [
+                "${env:windir}\\Sysnative\\cmd.exe",
+                "${env:windir}\\System32\\cmd.exe"
+            ],
+            "args": [],
+            "icon": "terminal-cmd"
+        },
+        "Git Bash": {
+            "source": "Git Bash",
+            "icon": "terminal-git-bash"
+        }
+    },
+    "terminal.integrated.defaultProfile.windows": "PowerShell" // when you open a file, w/e the old file you were viewing will be replaced (i turned this off)
 }
