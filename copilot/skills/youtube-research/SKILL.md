@@ -9,16 +9,20 @@ description: >
   or when they ask to "fully understand" a topic and video content would help.
   This skill performs structured research on the topic first, then finds and ranks the best
   YouTube videos that together give the user a complete, layered understanding from beginner
-  to advanced.
+  to advanced. Additionally, it generates a comprehensive lecture-style markdown document
+  that teaches the topic using the videos as reference material.
 ---
 
 # YouTube Research Skill
 
-Helps users deeply understand any topic by researching it and finding the best videos
+Helps users deeply understand any topic by researching it, finding the best videos
 to watch via Invidious — curated, ordered, and explained so they know exactly why to watch each one.
+Additionally, generates a comprehensive lecture-style markdown document that teaches the topic
+using the videos as reference material — perfect for learning at your own pace.
 
 **For the agent:** This skill delegates research to the **Explore** subagent, uses `fetch_webpage` to search Invidious
 and verify videos, and applies quality curation to build a learning path from beginner to advanced.
+It then synthesizes the topic into a structured markdown document with lecture-style content.
 
 ---
 
@@ -85,26 +89,126 @@ Select **6–10 videos** that together form a complete learning path. Apply thes
 - Outdated content on fast-moving topics (flag if unavoidable)
 - Redundant videos covering the same ground
 
-### Step 5 — Present the results
+### Step 5 — Generate a comprehensive lecture markdown
 
-Present the videos in a **recommended watch order** (not just a ranked list). Group into phases if helpful:
+After identifying the best videos, synthesize the topic into a detailed markdown document structured like lecture slides. This document should:
+
+**Structure:**
+- **Title & Introduction** — Overview of the topic and what will be covered
+- **Table of Contents** — Clear navigation
+- **Core Sections** — Organized by logical progression (foundations → intermediate → advanced)
+- **Key Concepts** — Defined terms and foundational ideas
+- **Examples & Diagrams** — Use ASCII art, tables, or descriptions of visual concepts
+- **Common Misconceptions** — Address frequent confusions
+- **Practical Applications** — Real-world uses and implementation guidance
+- **Further Learning** — Links to the curated videos, additional resources
+
+**Writing approach:**
+- Write as if teaching the topic, with narrative flow
+- Use the video titles, descriptions, and topics as reference points for content organization
+- Create a self-contained document that teaches the subject (don't just link to videos)
+- Include specific concepts that appear in multiple videos as emphasis on importance
+- Structure with headers, bullet points, and clear sections for readability
+- Aim for 3,000–5,000 words of substantive content
+
+**Example structure:**
+```markdown
+# [Topic]: A Comprehensive Guide
+
+## Introduction
+[Brief overview of what the topic is and why it matters]
+
+## Table of Contents
+1. [Foundations](#foundations)
+2. [Core Concepts](#concepts)
+...
+
+## Foundations
+### What is [Topic]?
+[Definition and context]
+
+### Historical Context
+[Where it came from]
+
+## Core Concepts
+### Concept 1: [Name]
+[Detailed explanation with examples]
+
+...
+
+## Advanced Topics
+[Deeper dives for those wanting mastery]
+
+## Common Misconceptions
+- **Misconception:** ...
+  **Reality:** ...
+
+## Practical Applications
+[How to use this knowledge]
+
+## Further Learning
+[Video links, books, papers]
+```
+
+### Step 6 — Present the results
+
+Present videos in **two distinct learning paths**:
+
+#### Path 1: Deep Dive (Comprehensive Understanding)
+
+Order videos chronologically by progression from foundational to advanced concepts. Group into phases:
 
 **Format for each video:**
 ```
-## [Phase Name] (optional grouping)
+## [Phase Name] (e.g., Foundations, Core Concepts, Advanced Mastery)
 
 ### [N]. [Video Title]
 **Channel:** [Channel Name]  
-**Link:** [Full YouTube URL]  
+**Link:** [https://inv.nadeko.net/watch?v=VIDEO_ID]  
 **Length:** [duration if known]  
 **Why watch this:** [2–3 sentences explaining what this covers, why it's good, and what the viewer will get from it]  
 **Best for:** [Beginner / Intermediate / Advanced]
 ```
 
 **After the list, include:**
-- A "Suggested Watch Order" with a brief narrative explaining the progression
+- A narrative explaining the progression and **why this order builds understanding**
 - A "If you only watch one" recommendation with a sentence explaining why
 - Any key concepts to look up alongside the videos (books, papers, docs)
+- A link to the **generated lecture markdown** for self-contained learning
+
+#### Path 2: Quick Review (Fast Grasp)
+
+Create a shorter subset (3–4 essential videos) that captures the core concepts in minimal time:
+
+**Format:**
+```
+## Quick Review Path (~[total duration])
+
+Watch these videos in order for a rapid but solid understanding of the topic:
+
+### [N]. [Video Title]
+**Channel:** [Channel Name]  
+**Link:** [https://inv.nadeko.net/watch?v=VIDEO_ID]  
+**Length:** [duration if known]  
+**Why this:** [1–2 sentences on why this is essential and what's the minimum you need to know]
+```
+
+**Guidance:**
+- Focus on overview + 1–2 deep dives on critical concepts
+- Skip tutorials or niche applications for this path
+- Should take 30–90 minutes total depending on topic complexity
+- Useful for time-constrained learners or quick refreshers
+
+#### Presentation Structure
+
+Present both paths clearly with:
+1. **Deep Dive Path** — Full progression with all 6–10 videos
+2. **Quick Review Path** — Streamlined 3–4 video option
+3. A note on when to use each ("Use Deep Dive if you want mastery; use Quick Review if time is limited")
+
+**Output both:**
+1. The curated video list with both paths
+2. A complete markdown document on the topic (generated as a separate artifact or file)
 
 ---
 
@@ -133,13 +237,15 @@ Present the videos in a **recommended watch order** (not just a ranked list). Gr
 ## Quality Standards
 
 - Never fabricate video URLs. Use only URLs you've verified with `fetch_webpage` from Invidious search results
-- Always include the actual Invidious link (https://inv.nadeko.net/watch?v=...)
-- Verify video metadata: title, channel, view count, upload date before recommending
-- If a video requires YouTube Premium or has accessibility issues, note it
+- **Always use Invidious links (https://inv.nadeko.net/watch?v=...) as the default** — validate URL accessibility by fetching the Invidious page before including it
+- **YouTube direct links only if:** They are verified as valid/clickable through Invidious verification AND you explicitly confirm the URL exists and is accessible
+- Verify video metadata: title, channel, view count, upload date before recommending via Invidious page inspection
+- If a video requires YouTube Premium or has accessibility issues on Invidious, note it and use Invidious link only
 - Prefer timeless content over trending content unless the topic is current events
 - For technical topics, value high view counts and reputable channels (Abdul Bari, MIT OpenCourseWare, NeetCode, etc.)
 - When uncertain about a video, say so rather than guessing about its content
-- **Invidious advantage:** All searches and verification happen without login, making this completely accessible
+- **Never present a video link without first checking it exists:** Use `fetch_webpage` on the inv.nadeko.net URL to confirm accessibility
+- **Invidious advantage:** All searches and verification happen without login, making this completely accessible and privacy-respecting
 
 ---
 
