@@ -14,11 +14,11 @@ description: >
 
 # YouTube Research Skill
 
-Helps users deeply understand any topic by researching it and finding the best YouTube videos
-to watch — curated, ordered, and explained so they know exactly why to watch each one.
+Helps users deeply understand any topic by researching it and finding the best videos
+to watch via Invidious — curated, ordered, and explained so they know exactly why to watch each one.
 
-**For the agent:** This skill delegates research to the **Explore** subagent, uses `fetch_webpage` to verify videos,
-and applies quality curation to build a learning path from beginner to advanced.
+**For the agent:** This skill delegates research to the **Explore** subagent, uses `fetch_webpage` to search Invidious
+and verify videos, and applies quality curation to build a learning path from beginner to advanced.
 
 ---
 
@@ -44,24 +44,24 @@ Do **2–4 research queries** on the topic itself before searching YouTube.
 
 ### Step 3 — Find the best YouTube videos
 
-Now search YouTube specifically. Use `runSubagent` with **Explore** agent to find relevant videos:
+Search videos via **Invidious** (privacy-focused YouTube frontend) using `fetch_webpage`:
 
-**Ask the agent to find:**
-- "[Topic] explained" videos for beginner overviews
-- "[Topic] deep dive" or comprehensive lecture videos
-- "[Topic] tutorial" or course videos
-- Specific well-known educators in the field (e.g. 3Blue1Brown for math, Kurzgesagt for science, Andrej Karpathy for AI)
-- Conference talks or lectures (MIT, Stanford, etc. specific to topic)
-- Visual/animated explainers on specific subtopics
+**Search Invidious directly for:**
+- `https://inv.nadeko.net/search?q=[topic]+explained`
+- `https://inv.nadeko.net/search?q=[topic]+tutorial`
+- `https://inv.nadeko.net/search?q=[topic]+deep+dive`
+- `https://inv.nadeko.net/search?q=[educator+name]` (for known experts)
+- `https://inv.nadeko.net/search?q=[topic]+lecture`
 
-**Once promising videos are found:**
-- Request YouTube URLs from the Explore agent
-- Verify each URL with `fetch_webpage` to confirm title, description, and relevance
+**Example searches:**
+- `https://inv.nadeko.net/search?q=big+O+notation`
+- `https://inv.nadeko.net/search?q=Master+Theorem+algorithm`
+- `https://inv.nadeko.net/search?q=algorithm+complexity+analysis`
 
-**For each promising video, fetch its YouTube page** using `fetch_webpage` on the YouTube URL to verify:
-- Actual title, channel name, date, and description
-- Whether content matches the depth and scope needed
-- Any paywalls, age restrictions, or accessibility notes
+**For each promising video, fetch its Invidious page** using `fetch_webpage` on the Invidious URL (format: `https://inv.nadeko.net/watch?v=[VIDEO_ID]`) to verify:
+- Actual title, channel name, view count, and description
+- Upload date and relevance to learning goals
+- No login walls or accessibility issues (Invidious is login-free)
 
 ### Step 4 — Curate and rank
 
@@ -111,34 +111,43 @@ Present the videos in a **recommended watch order** (not just a ranked list). Gr
 ## Tool Usage & Limitations
 
 **Available tools:**
-- `runSubagent` with **Explore** agent for topic research and background gathering
-- `fetch_webpage` to verify YouTube URLs and fetch video descriptions/metadata
+- `runSubagent` with **Explore** agent for topic research and background knowledge
+- `fetch_webpage` to search Invidious and verify video URLs/metadata
 - Direct knowledge to propose well-known educators and channels
 
-**Limitations:**
-- I don't have direct search API access, so I rely on:
-  - Your knowledge of good channels and educators
-  - Known experts in each field (e.g., 3Blue1Brown for math, Kurzgesagt for science)
-  - Searching by specific educator names or channel recommendations
-- Always verify URLs with `fetch_webpage` before including them
+**Search method:**
+- Use `fetch_webpage` with Invidious search URLs: `https://inv.nadeko.net/search?q=[QUERY]`
+- Invidious provides YouTube content without login walls
+- Parse search results to extract video URLs in format: `https://inv.nadeko.net/watch?v=[ID]`
+- Fetch individual video pages to confirm titles, descriptions, view counts, and dates
+
+**Advantages:**
+- No authentication required
+- Privacy-focused (no tracking)
+- Full access to YouTube video metadata
+- Can search by topic, educator name, or video type
+- Works reliably via `fetch_webpage`
 
 ---
 
 ## Quality Standards
 
-- Never fabricate video URLs. Use only URLs you've verified with `fetch_webpage` or that you know with high confidence
-- Always include the actual YouTube link (https://www.youtube.com/watch?v=...)
-- If a channel is paywalled or the video is behind a subscription, note it
+- Never fabricate video URLs. Use only URLs you've verified with `fetch_webpage` from Invidious search results
+- Always include the actual Invidious link (https://inv.nadeko.net/watch?v=...)
+- Verify video metadata: title, channel, view count, upload date before recommending
+- If a video requires YouTube Premium or has accessibility issues, note it
 - Prefer timeless content over trending content unless the topic is current events
-- For technical topics, don't over-index on beginner content just because it's popular
+- For technical topics, value high view counts and reputable channels (Abdul Bari, MIT OpenCourseWare, NeetCode, etc.)
 - When uncertain about a video, say so rather than guessing about its content
+- **Invidious advantage:** All searches and verification happen without login, making this completely accessible
 
 ---
 
 ## Example Trigger Phrases
 
-- "What YouTube videos should I watch to understand quantum computing?"
+- "What videos should I watch to understand quantum computing?"
 - "Find me the best videos to learn Rust programming"
 - "I want to deeply understand the French Revolution — what should I watch?"
-- "Research blockchain for me and give me the best videos"
-- "Help me learn about stoic philosophy through YouTube"
+- "Research blockchain for me and find the best educational videos"
+- "Help me learn about stoic philosophy through video"
+- "Curate the best videos for studying algorithm complexity"
