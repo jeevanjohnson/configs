@@ -1,6 +1,6 @@
 {
     "terminal.integrated.fontFamily": "monospace",
-    "editor.fontFamily": "JetBrainsMono NFP",
+    "editor.fontFamily": "JetBrainsMono NF SemiBold",
     "workbench.settings.applyToAllProfiles": [
         "editor.fontFamily"
     ],
@@ -20,7 +20,7 @@
     "claudeCode.preferredLocation": "panel",
     "workbench.editor.empty.hint": "hidden",
     "chat.viewSessions.orientation": "stacked",
-    "workbench.colorTheme": "One Dark Pro Night Flat",
+    "workbench.colorTheme": "Dark Modern",
     
     // Inspired by https://www.youtube.com/watch?v=4opxM6g77UA
     // Search/Path Indexing optimizations
@@ -47,7 +47,7 @@
     "python.analysis.exclude": ["**/.venv", "**/venv"],
 
     // VSC Performance specific
-    "breadcrumbs.enabled": false, // path under the file name in the editor
+    "breadcrumbs.enabled": true, // path under the file name in the editor
     "editor.minimap.enabled": false, // mini map on the left, maybe enable in the future
     "search.searchOnType": false, // now press enter to search
     "terminal.integrated.gpuAcceleration": "on", // GPU acceleration for terminal optimization
@@ -71,5 +71,18 @@
             "icon": "terminal-git-bash"
         }
     },
-    "terminal.integrated.defaultProfile.windows": "PowerShell" // when you open a file, w/e the old file you were viewing will be replaced (i turned this off)
+    "terminal.integrated.defaultProfile.windows": "PowerShell",
+    "terminal.integrated.commandsToSkipShell": [
+        "kilo-code.new.agentManagerOpen",
+        "kilo-code.new.agentManager.showTerminal"
+    ],
+    "kilo-code.new.autocomplete.enableChatAutocomplete": true,
+    "kilo-code.new.autocomplete.enableSmartInlineTaskKeybinding": true,
+    "kilo-code.new.browserAutomation.enabled": true,
+    "kilo-code.new.browserAutomation.headless": true, // when you open a file, w/e the old file you were viewing will be replaced (i turned this off)
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.autopep8",
+        "editor.formatOnSave": true
+    },
+    "files.autoSave": "afterDelay"
 }
