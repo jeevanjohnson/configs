@@ -28,9 +28,13 @@ It then synthesizes the topic into a structured markdown document with lecture-s
 
 ## Workflow
 
-### Step 1 — Understand the topic scope
+### Step 1 — Understand the context and topic scope
 
-Before searching, briefly assess:
+**Determine the context first:**
+- Are you being called from **study-guide with a specific problem?** If yes, activate **Problem-Solving Mode** (see Step 6B below)
+- Or is this a general topic research request? Continue with standard research mode.
+
+**For topic scope:**
 - Is this a broad domain (e.g. "machine learning") or a specific question (e.g. "how does backpropagation work")?
 - What level of depth is implied? Adjust the search strategy accordingly.
 - Break broad topics into logical sub-themes (foundations, mechanisms, applications, debates, etc.)
@@ -209,6 +213,100 @@ Present both paths clearly with:
 **Output both:**
 1. The curated video list with both paths
 2. A complete markdown document on the topic (generated as a separate artifact or file)
+
+---
+
+### Step 6B — Problem-Solving Mode (When Called from Study Guide with a Specific Problem)
+
+**When you receive a problem context from study-guide**, restructure the output explicitly as:
+
+**"Watch these videos in this order to solve this problem:"**
+
+**Format:**
+
+```
+## 🎬 Video Learning Path to Solve This Problem
+
+### Watch These Videos In Order:
+
+**Video 1: [Prerequisite Concept]**
+- **Title:** [Exact video title]
+- **Channel:** [Channel name]
+- **Link:** [https://inv.nadeko.net/watch?v=VIDEO_ID]
+- **Length:** [duration]
+- **Why:** This teaches [concept needed for Step 1 of the solution]
+- **Key takeaway:** [What you'll understand after watching]
+
+→ **After Video 1, you'll understand:** [concept summary]
+
+---
+
+**Video 2: [Core Technique from Solution Step 2]**
+- **Title:** [Exact video title]
+- **Channel:** [Channel name]
+- **Link:** [https://inv.nadeko.net/watch?v=VIDEO_ID]
+- **Length:** [duration]
+- **Why:** This teaches the [specific technique/method] needed to [solve Step 2 of the problem]
+- **Key takeaway:** [What you'll be able to do after watching]
+
+→ **After Video 2, you can:** [skill gained]
+
+---
+
+**Video 3: [Next Solution Step]**
+- **Title:** [Exact video title]
+- **Channel:** [Channel name]
+- **Link:** [https://inv.nadeko.net/watch?v=VIDEO_ID]
+- **Length:** [duration]
+- **Why:** This covers [method/concept] which is [how it's used in Step 3]
+- **Key takeaway:** [Actionable understanding]
+
+→ **After Video 3, you can:** [skill or understanding]
+
+---
+
+**Video 4: [Worked Example Problem]**
+- **Title:** [Exact video title]
+- **Channel:** [Channel name]
+- **Link:** [https://inv.nadeko.net/watch?v=VIDEO_ID]
+- **Length:** [duration]
+- **Why:** Watch someone solve a problem **like the one you're trying to solve** using the techniques from Videos 1–3
+- **Key takeaway:** See the full strategy in action
+
+→ **After Video 4:** You've seen the complete workflow
+
+---
+
+**Video 5 (Optional): [Similar Problem Type or Advanced Application]**
+- **Title:** [Exact video title]
+- **Channel:** [Channel name]
+- **Link:** [https://inv.nadeko.net/watch?v=VIDEO_ID]
+- **Length:** [duration]
+- **Why:** Extends to [related problem type or concept], so you can solve similar problems and variations
+- **Key takeaway:** Apply the technique to [broader context]
+
+---
+
+## Now You Can Solve It
+
+**After watching Videos 1–4 in order, you have:**
+- ✅ Understood [Prerequisite 1]
+- ✅ Mastered [Technique from Solution Step 2]
+- ✅ Learned [Technique from Step 3]
+- ✅ Seen the full problem-solving workflow in action
+
+**You're ready to solve:**
+- ✅ The original problem
+- ✅ Similar problems of this type
+- ✅ Related problems using the same techniques (as shown in Video 5)
+```
+
+**Key differences from standard mode:**
+1. **Explicit mapping** — Each video is tied to a specific step in the problem solution
+2. **Progressive enablement** — Each video unlocks a new capability ("After Video X, you can...")
+3. **Problem-focused framing** — "To solve THIS problem, watch X, then Y, then Z"
+4. **Worked example emphasis** — Always include a real problem solved using these exact techniques
+5. **Recap** — End with a summary showing the viewer is now ready to solve the problem and variations
 
 ---
 

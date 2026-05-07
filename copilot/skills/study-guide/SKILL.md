@@ -124,18 +124,61 @@ These are *next steps* and sibling concepts — not prerequisites, but what to t
 
 ---
 
-### Step 7 — Hand Off to YouTube Research Skill (Optional)
+### Step 7 — Build a Concrete, Ordered Video Learning Path
 
-At the end of the guide, **ask the user if they want videos** to reinforce the concepts. Only proceed with the youtube-research skill if they explicitly request it.
+Create an explicit, step-by-step video sequence that maps directly to solving the problem. Structure it as: **"Watch X for concept A → Then watch Y for technique B → Then watch Z to see the full solution in action."**
 
-**Transition language:**
-> "Would you like me to find curated videos to reinforce these concepts? If so, I can search for the best resources on [main topic] and [key prerequisite]."
+**Build the path by analyzing your Step-by-Step solution:**
 
-Only if they say yes, activate the `youtube-research` skill targeting:
-- The main topic/problem type
-- 1–2 of the most important prerequisites (if they seem likely to be gaps)
+1. **Identify prerequisite knowledge** — What foundational concepts need video reinforcement first?
+2. **Break down the solution into video topics** — Each major step of the solution = one video topic
+3. **Order them logically** — Build from prerequisites → core concepts → techniques → worked examples → similar problems
+4. **Create concrete search queries** — Specific topic names, not vague terms
 
-Use a focused, specific query — not the raw problem text.
+**Format:**
+
+```
+## 🎬 Video Learning Path (Watch In This Order)
+
+**Video 1: [Foundational Concept]**
+- Watch: [Specific video title or search query]
+- Why: [How this concept is used in the solution]
+- Duration: ~[est. time]
+
+**Video 2: [Core Technique/Concept]**
+- Watch: [Specific video title or search query]
+- Why: [How this builds on Video 1]
+- Duration: ~[est. time]
+
+**Video 3: [Solution Strategy/Method]**
+- Watch: [Specific video title or search query]
+- Why: [How this is the main technique for solving this type of problem]
+- Duration: ~[est. time]
+
+**Video 4: [Worked Example]**
+- Watch: [Similar worked problem or Khan Academy/3Blue1Brown example matching this]
+- Why: See the full strategy applied to a real example
+- Duration: ~[est. time]
+
+**Video 5 (Optional): [Common Mistakes & Pitfalls]**
+- Watch: [Video covering tricky parts of this topic]
+- Why: Learn what to avoid based on the mistakes section above
+- Duration: ~[est. time]
+```
+
+**Important: Use concrete video titles and creators, not vague searches.** For example:
+- ✅ "Khan Academy's 'Solving Systems of Equations by Substitution' (7:42)"
+- ✅ "3Blue1Brown's 'Essence of Linear Algebra: Vectors' (10:34)"
+- ❌ "Watch something on systems of equations"
+
+After presenting the concrete path, ask: **"Would you like me to search YouTube for these specific topics and find the actual best videos? I'll create an ordered list showing: Watch Video 1 for [Step A] → Watch Video 2 for [Step B] → Watch Video 3 for a worked example → then you'll be able to solve this problem and similar ones."**
+
+Only if they explicitly say yes, activate `youtube-research` with:
+- **Context:** The original problem or topic
+- **Solution steps:** The specific steps from your Step-by-Step section
+- **Request:** "Create videos in Problem-Solving Mode mapped to these solution steps"
+
+The youtube-research skill will output videos in explicit sequence: "Watch X (for Step A) → Then Y (for Step B) → Then Z (for worked examples)" — structured so the viewer can immediately apply what they learn to solve the problem.
 
 ---
 
@@ -148,7 +191,8 @@ Present the full guide in this order:
 3. `## 🔢 Step-by-Step` (Solution or Deep Dive)
 4. `## ⚠️ Common Mistakes`
 5. `## 📚 To Master This Area, Also Study`
-6. Ask if the user wants videos (don't auto-handoff)
+6. `## 🎬 Video Learning Path (Watch In This Order)` (Concrete, ordered sequence)
+7. Ask if the user wants you to search YouTube for those specific videos (explicit request required)
 
 ---
 
