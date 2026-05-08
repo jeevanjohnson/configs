@@ -31,7 +31,7 @@ It then synthesizes the topic into a structured markdown document with lecture-s
 ### Step 1 — Understand the context and topic scope
 
 **Determine the context first:**
-- Are you being called from **study-guide with a specific problem?** If yes, activate **Problem-Solving Mode** (see Step 6B below)
+- Are you being called from **LRS-study-guide with a specific problem?** If yes, activate **Problem-Solving Mode** (see Step 6B below)
 - Or is this a general topic research request? Continue with standard research mode.
 
 **For topic scope:**
@@ -218,7 +218,7 @@ Present both paths clearly with:
 
 ### Step 6B — Problem-Solving Mode (When Called from Study Guide with a Specific Problem)
 
-**When you receive a problem context from study-guide**, restructure the output explicitly as:
+**When you receive a problem context from LRS-study-guide**, restructure the output explicitly as:
 
 **"Watch these videos in this order to solve this problem:"**
 

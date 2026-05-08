@@ -14,7 +14,7 @@ Turn any problem, topic, or lecture concept into a complete learning package tha
 2. **Concept Breakdown** — A clear, intuitive explanation of the core ideas involved
 3. **Step-by-Step Solution / Deep Dive** — Walk through the problem or topic methodically
 4. **Common Mistakes** — What trips people up on problems like this
-5. **Video Learning** — Hand off to the `youtube-research` skill for curated videos on key concepts
+5. **Video Learning** — Hand off to the `LRS-youtube-research` skill for curated videos on key concepts
 
 ## When to Use This Skill
 
@@ -173,12 +173,12 @@ Create an explicit, step-by-step video sequence that maps directly to solving th
 
 After presenting the concrete path, ask: **"Would you like me to search YouTube for these specific topics and find the actual best videos? I'll create an ordered list showing: Watch Video 1 for [Step A] → Watch Video 2 for [Step B] → Watch Video 3 for a worked example → then you'll be able to solve this problem and similar ones."**
 
-Only if they explicitly say yes, activate `youtube-research` with:
+Only if they explicitly say yes, activate `LRS-youtube-research` with:
 - **Context:** The original problem or topic
 - **Solution steps:** The specific steps from your Step-by-Step section
 - **Request:** "Create videos in Problem-Solving Mode mapped to these solution steps"
 
-The youtube-research skill will output videos in explicit sequence: "Watch X (for Step A) → Then Y (for Step B) → Then Z (for worked examples)" — structured so the viewer can immediately apply what they learn to solve the problem.
+The LRS-youtube-research skill will output videos in explicit sequence: "Watch X (for Step A) → Then Y (for Step B) → Then Z (for worked examples)" — structured so the viewer can immediately apply what they learn to solve the problem.
 
 ---
 
@@ -235,5 +235,5 @@ Present the full guide in this order:
 ✓ **Never skip the prerequisite map** — it's the most uniquely valuable part of this skill  
 ✓ **Solutions must be annotated** — the *why* at each step is as important as correctness  
 ✓ **Common mistakes are specific** — to this problem type, not generic advice  
-✓ **Always ask about videos** — only activate youtube-research if user requests it  
+✓ **Always ask about videos** — only activate LRS-youtube-research if user requests it  
 ✓ **Progress from simple to complex** — scaffold understanding step-by-step

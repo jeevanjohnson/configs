@@ -157,9 +157,33 @@ Based on the errors above, focus on:
    - Verification step: [What to check before submitting]
 ```
 
+### Step 7 — Offer Video Learning Paths (Optional)
+
+For **conceptual gaps only** (not procedural or careless mistakes), proactively offer curated video learning:
+
+**If gaps are primarily conceptual:**
+> "Would you like me to research curated YouTube video sequences for [identified concepts]? I can find beginner-friendly tutorials and progressively deeper resources to help you fully understand these topics before attempting similar problems again."
+
+**Only if the user explicitly says yes**, delegate to `LRS-youtube-research` skill with:
+- The specific concepts identified as gaps (e.g., "chain rule in calculus", "photosynthesis mechanisms")
+- The problem type that exposed the gap (so videos are problem-solving focused)
+- Request: "Create a beginner-to-advanced video sequence for this topic, ending with worked examples similar to [problem type]"
+
+**Do NOT offer videos for:**
+- Purely procedural errors (practice is more useful than watching)
+- Careless/arithmetic mistakes (verification steps are better)
+- When the student is short on time before a deadline (videos take longer than targeted review)
+
+**This creates a natural workflow:**
+1. Student solves problem
+2. You identify gaps with problem-solution-checker
+3. If conceptual: offer videos via youtube-research
+4. Student watches videos and revisits the problem
+5. Loop back to problem-solution-checker if needed
+
 ---
 
-### Step 7 — Revision Guidance (Optional)
+### Step 8 — Revision Guidance (Optional)
 
 If the student wants to resubmit or redo the problem:
 
@@ -177,7 +201,8 @@ Present feedback in this order:
 2. `## ❌ Error Breakdown` (Each mistake with root cause and how to avoid it)
 3. `## ✅ What You Did Well` (Specific strengths and correct work)
 4. `## 📚 Targeted Review` (Exactly what concepts/procedures to study, with resources)
-5. `## 🔧 Revision Guidance` (Optional: how to redo it if they want)
+5. `## 🎬 Video Learning Paths (Optional)` (Only if conceptual gaps exist; ask if user wants curated videos)
+6. `## 🔧 Revision Guidance` (Optional: how to redo it if they want)
 
 ---
 
@@ -216,6 +241,28 @@ Present feedback in this order:
 
 ---
 
+## Video Learning Integration
+
+When conceptual gaps are identified, offer to delegate to `LRS-youtube-research` skill for curated video learning paths.
+
+**Example offer:**
+```
+## 🎬 Video Learning Paths (Optional)
+
+Your gaps are primarily conceptual (chain rule, implicit differentiation, related rates). These topics are best understood through visual explanation and worked examples.
+
+**Would you like me to research curated YouTube videos for:**
+- Chain rule in calculus (with visual derivatives explained)
+- Implicit differentiation (step-by-step technique)
+- Related rates problems (worked examples similar to the one you attempted)
+
+I'll find beginner-friendly tutorials, visual explanations, and worked examples that match your problem type. Just say yes, and I'll create ordered video sequences.
+```
+
+**When user says yes**: Delegate to LRS-youtube-research with the specific concepts and problem type, requesting problem-solving focused video paths.
+
+---
+
 ## Tone Guidelines
 
 - **Be encouraging** — Highlight what was done well first
@@ -233,4 +280,6 @@ Present feedback in this order:
 ✓ **Review recommendations are actionable** — point to exact topics and resources  
 ✓ **Feedback matches the problem type** — subject-specific language and emphasis  
 ✓ **Student's reasoning is acknowledged** — even if wrong, show what they were trying  
-✓ **Next steps are clear** — what to study, what to practice, what to verify before resubmitting
+✓ **Next steps are clear** — what to study, what to practice, what to verify before resubmitting  
+✓ **Video learning paths offered for conceptual gaps** — user must explicitly request videos  
+✓ **Clear distinction** — videos for conceptual gaps, practice for procedural, verification for careless mistakes

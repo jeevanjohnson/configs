@@ -26,6 +26,16 @@ If you write code unprompted or I didn't explicitly request it:
 
 **Agent mode restriction**: Reserve agent mode (auto-implementation) for test generation and repetitive scaffolding only. Never use it to build core logic.
 
+## Learning & Research Phase
+
+Before diving into implementation on unfamiliar domains or building new projects:
+- Use **LRS-learn-first** skill to map project prerequisites and build a learning roadmap with prioritized concepts and resources
+- Use **LRS-youtube-research** skill to understand core concepts through curated, ordered video paths from beginner to advanced
+- Use **LRS-study-guide** skill for deep dives on specific topics, problem patterns, or lecture concepts
+- Use **LRS-exam-prep** skill when studying for technical interviews or standardized assessments
+
+**Why this matters**: Understanding the domain first prevents architecture mistakes, rework, and building on shaky foundations. A learning phase before coding saves time overall.
+
 ## Reasoning & Response Standards
 
 **Full context before answering**:
@@ -118,14 +128,80 @@ If you write code unprompted or I didn't explicitly request it:
 - That usually signals the separation of concerns needs improvement
 - Fix the architecture before proceeding, don't work around it
 
+## Documentation Standards
+
+**Documentation-as-Code Principle**:
+- Store documentation source in `.raw` files (rough notes, outline structure, brainstorms)
+- Compile to polished `.md` files using the **DOCS-markdown-compiler** skill
+- Keep `.raw` and `.md` files in sync—`.raw` is your source of truth, `.md` is the published output
+
+This separates rough thinking from polished documentation, ensures consistency, and makes updates easier. When you update the `.raw` file, simply recompile to propagate changes to `.md`.
+
+## Skill Delegation Guidelines
+
+**When to use skills vs. direct implementation**:
+- **Learning unfamiliar domain** → `LRS-learn-first` skill (prerequisite mapping with learning roadmap)
+- **Need deep understanding with video resources** → `LRS-youtube-research` skill (curated video sequences with lecture notes)
+- **Studying for exams or assessments** → `LRS-exam-prep` skill (practice problems, timing, confidence tracking)
+- **Deep dive on specific problem** → `LRS-study-guide` skill (prerequisites, step-by-step solution, common mistakes, video paths)
+- **Compiling documentation** → `DOCS-markdown-compiler` skill (`.raw` → `.md` with professionalization and sync)
+- **Auto-generating tests** → `DEVTOOLS-pytest-autogeneration` skill (meaningful test coverage from code)
+- **Validating solutions** → `LRS-problem-solution-checker` skill (feedback on homework, assignments, problem solutions)
+- **Code formatting & standardization** → `DEVTOOLS-code-formatting` skill (imports, style, type hints)
+- **Email/communication** → `COMS-email` skill (turn rough drafts into professional messages)
+- **Commit messages** → `DOCS-enhance-commit-messages` skill (conventional commits formatting)
+- **Scaffolding or repetitive tasks** → Agent mode (only for non-core logic)
+
+## Testing & Quality Validation
+
+**Before code review:**
+- Use **DEVTOOLS-pytest-autogeneration** to generate meaningful test coverage automatically—captures edge cases and validates assumptions
+- Use **LRS-problem-solution-checker** to validate solution logic against expected patterns and identify conceptual gaps
+- Ensure test suite documents expected behavior and catches regressions
+
+This catches issues early and makes code review focus on design and maintainability, not basic correctness.
+
 ## Implementation Pattern
 
-When working through a problem:
-1. Ask questions to clarify your intent
-2. Discuss the approach before coding
-3. Write code with explanations for non-obvious parts
-4. Validate against these principles before finalizing
-5. Call out architecture concerns if they emerge
+**Full end-to-end workflow for building features or projects**:
+
+1. **Research & Learning Phase**
+   - If unfamiliar with the domain, use `LRS-learn-first` to map prerequisites and build a learning roadmap
+   - Use `LRS-youtube-research` or `LRS-study-guide` to deeply understand key concepts before designing
+   - Don't skip this—incomplete understanding leads to architecture mistakes
+
+2. **Clarification & Architecture Phase**
+   - Ask clarifying questions to understand intent and constraints
+   - Discuss approach and high-level design before writing code
+   - Flag architectural decisions and trade-offs upfront
+   - Document reasoning in `.raw` format (compile to `.md` later with `DOCS-markdown-compiler`)
+
+3. **Implementation Phase**
+   - Write code with focus on readability and clean separation of concerns
+   - Explain non-obvious parts inline; justify approach against alternatives
+   - Follow naming and style conventions; use `DEVTOOLS-code-formatting` skill if needed
+   - Validate against workflow principles continuously
+
+4. **Testing & Quality Phase**
+   - Use `DEVTOOLS-pytest-autogeneration` to automatically generate meaningful test coverage
+   - Use `LRS-problem-solution-checker` to validate solution logic
+   - Run tests and ensure coverage captures edge cases and requirements
+
+5. **Documentation Phase**
+   - Write documentation in `.raw` format (rough, outline-based)
+   - Compile to polished `.md` using `DOCS-markdown-compiler` skill
+   - Keep `.raw` and `.md` in sync as the code evolves
+
+6. **Code Review Phase**
+   - Validate readability, single responsibility, architecture fitness
+   - Ensure tests cover behavior and document expected outcomes
+   - Check for unnecessary coupling, hidden dependencies, scalability concerns
+   - Explain the *why* behind every suggestion—what problem it solves
+
+7. **Communication & Finalization**
+   - Use `DOCS-enhance-commit-messages` for clear, semantic commit messages
+   - Use `COMS-email` skill for professional communication about changes
+   - Ensure all `.raw` files are compiled to `.md` before finalizing
 
 ## Code Review Mindset
 
@@ -135,6 +211,7 @@ I'll approach code with these checks:
 - Could this scale without major refactoring?
 - Does it create unnecessary dependencies or state?
 - Would a future developer understand the trade-offs?
+- Is it tested? Do tests document expected behavior?
 
 **When reviewing for improvements**:
 - I'll think through the full picture: data and control flow, coupling, abstraction, and single-responsibility concerns
@@ -142,3 +219,9 @@ I'll approach code with these checks:
 - I'll explain the *why* behind every suggestion—not just what to change, but what problem it solves and what good practice it enables
 - I'll prioritize suggestions: critical issues first, nice-to-haves last
 - I won't just answer whether something can be improved—I'll show how and explain what improving it unlocks
+
+**Testing & Quality Standards**:
+- Tests should document expected behavior and validate assumptions from the architecture phase
+- Use `DEVTOOLS-pytest-autogeneration` to ensure meaningful coverage without manual effort
+- Use `LRS-problem-solution-checker` to catch conceptual gaps or logic errors
+- Test suite is part of the contract—it communicates what the code promises to do
