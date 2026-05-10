@@ -1,8 +1,6 @@
 # Production Workflow
 
-How I like to have my whole production workflow across devices.
-
-Currently on Windows, but I'd like to eventually dual boot with Linux.
+How I keep my setup consistent across devices. Currently on Windows, might dual boot with Linux eventually.
 
 ## What's Here
 
@@ -13,9 +11,8 @@ Currently on Windows, but I'd like to eventually dual boot with Linux.
 
 Just copy and paste the folders and content into the right places.
 
-**For Copilot**: Find `.copilot` and copy the folders in.
-
-**For VSC**: Open `Open User Settings (JSON)` and paste the JSON.
+- **Copilot**: Find `.copilot` and copy the folders in
+- **VSC**: Open `Open User Settings (JSON)` and paste the JSON
 
 ## Available Skills
 
@@ -29,3 +26,4 @@ Just copy and paste the folders and content into the right places.
 - LRS-problem-solution-checker
 - LRS-study-guide
 - LRS-youtube-research
+- LRS-quiz-generator
