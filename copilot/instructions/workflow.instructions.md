@@ -140,6 +140,7 @@ This separates rough thinking from polished documentation, ensures consistency, 
 ## Skill Delegation Guidelines
 
 **When to use skills vs. direct implementation**:
+- **Asking for videos** → `LRS-youtube-research` skill (always use when requesting video recommendations, "what should I watch", video research, or curated video learning paths)
 - **Learning unfamiliar domain** → `LRS-learn-first` skill (prerequisite mapping with learning roadmap)
 - **Need deep understanding with video resources** → `LRS-youtube-research` skill (curated video sequences with lecture notes)
 - **Studying for exams or assessments** → `LRS-exam-prep` skill (practice problems, timing, confidence tracking)
